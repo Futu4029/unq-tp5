@@ -19,8 +19,8 @@ class pYMtest {
 		
 		list.add(jose);
 		list.add(xavi);
-		list.add(ranga);
-		list.add(bombon);
+		//list.add(ranga);
+		//list.add(bombon);
 		
 		for (int i = 0; i<list.size(); i++) {
 			System.out.println(list.get(i).getNombre());
