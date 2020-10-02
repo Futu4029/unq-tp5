@@ -4,56 +4,53 @@ import agencia.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
+import java.util.List;
 
 class Supermercado {
 	private Producto arroz;
 	private ProductoCooperativa arrozC;
 	private Caja caja;
 	private Factura edesurChorros;
-	private Impuesto impAlBuenSeñor;
-	private ArrayList<Producto> listaDeCompras = new ArrayList <Producto>();
+	private Impuesto impuesto;
+	private ArrayList<Cobrable> listaDeCompras = new ArrayList <Cobrable>();
 	
 	@BeforeEach
 	public void setUp() {
 		arroz = new Producto(10.5, 10);
 		arrozC = new ProductoCooperativa(10.0, 20, 10.0);
 		caja = new Caja();
-		edesurChorros = new Servicio(100.0, 2500.0);
-		impAlBuenSeñor = new Impuesto(666.6);
+		edesurChorros = new Servicio(30.0, 2.0);
+		impuesto = new Impuesto(10);
 		listaDeCompras.add(arroz);
 		listaDeCompras.add(arrozC);
 	}
 	@Test
 	void registrarPago() {
-		caja.vender(listaDeCompras);
-		assertEquals(19.5, caja.totalRegistrado());
-		caja.vender(arroz);
-		assertEquals(caja.totalRegistrado(), 30.0);
+		caja.registrar(listaDeCompras);
+		assertEquals(19.5, caja.montoAPagar());
+		caja.registrar(arroz);
+		assertEquals(10.5, caja.montoAPagar());
 	}
 	@Test
 	void controlDeStock() {
-		caja.vender(listaDeCompras);
-		assertEquals(arroz.getStock(), 9);
-		assertEquals(arrozC.getStock(), 19);
-	}
-	
-	@Test
-	void cobrarFactura() {
-		caja.registrarPago(edesurChorros);
-		assertEquals(caja.totalRegistrado(), 250000.0);
+		caja.registrar(listaDeCompras);
+		caja.montoAPagar();
+		assertEquals(9, arroz.getStock());
+		assertEquals(19, arrozC.getStock());
 	}
 	
 	@Test
 	void cobrarImpuesto() {
-		caja.registrarPago(impAlBuenSeñor);
-		assertEquals(caja.totalRegistrado(), 666.6);
+		caja.registrar(impuesto);
+		assertEquals(10, caja.montoAPagar());
 	}
 	
 	@Test
 	void cobrosVarios() {
-		caja.registrarPago(impAlBuenSeñor);
-		caja.registrarPago(impAlBuenSeñor);
-		assertEquals(caja.totalRegistrado(), 1333.2);
+		caja.registrar(impuesto);
+		caja.registrar(impuesto);
+		caja.registrar(edesurChorros);
+		assertEquals(80.0, caja.montoAPagar());
 	}
 
 }

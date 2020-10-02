@@ -10,7 +10,7 @@ import personasYMascotas.*;
 import java.util.LinkedList;
 import java.util.List;
 
-class pYMtest {
+class test {
 
 	
 	public static void main(String[] args) {

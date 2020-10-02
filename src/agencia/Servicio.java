@@ -10,7 +10,7 @@ public class Servicio extends Factura{
 	}
 	
 	@Override
-	public double montoAPagar() {
+	public  double registrarPago() {
 		return costoUnidad * unidadConsumida;
 	}
 }
