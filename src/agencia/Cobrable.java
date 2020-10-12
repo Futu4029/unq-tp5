@@ -2,5 +2,6 @@ package agencia;
 
 public interface Cobrable {
 	
-	public double registrarPago();
+	public double getPrecio();
+	public void registrarEnAgencia(Agencia agencia);
 }

@@ -2,7 +2,6 @@ package agencia;
 
 public  class Factura implements Cobrable{
 	private double monto;
-	private Agencia agenciaRecaudadora;
 	
 	public Factura() {
 		super();
@@ -16,7 +15,12 @@ public  class Factura implements Cobrable{
 		this.monto = monto;
 	}
 	
-	public  double registrarPago() {
-		return monto;
+	@Override
+	public  double getPrecio() {
+		return this.monto;
+	}
+
+	public void registrarEnAgencia(Agencia agencia) {
+		agencia.registrarPago(this);
 	}
 }

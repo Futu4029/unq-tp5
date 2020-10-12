@@ -9,7 +9,8 @@ public class Producto implements Cobrable{
 		this.stock = stock;
 	}
 	
-	public Double getPrecio() {
+	public double getPrecio() {
+		restarStock();
 		return precio;
 	}
 	
@@ -26,9 +27,7 @@ public class Producto implements Cobrable{
 			stock = stock -1;
 		}
 	}
-	
-	public double registrarPago() {
-		restarStock();
-		return getPrecio();
+	public void registrarEnAgencia(Agencia agencia) {
+		
 	}
 }

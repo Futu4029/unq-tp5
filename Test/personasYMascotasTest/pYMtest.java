@@ -1,13 +1,9 @@
 package personasYMascotasTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.junit.jupiter.api.Test;
 import personasYMascotas.*;
-import java.util.LinkedList;
 import java.util.List;
 
 class test {
@@ -30,12 +26,5 @@ class test {
 		}
 	}
 
-	public void setUp() {
-
-	}
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
 
 }
